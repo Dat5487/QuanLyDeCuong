@@ -1,0 +1,60 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.VanPhongKhoa
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Chỉnh sửa thông tin nhân viên</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                <form asp-action="Update">
+                    <input type="hidden" asp-for="MaNhanVien" />
+                    <div class="form-group">
+                        <label asp-for="TenNhanVien" class="control-label"></label>
+                        <input asp-for="TenNhanVien" class="form-control" />
+                        <span asp-validation-for="TenNhanVien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SoDienThoai" class="control-label"></label>
+                        <input asp-for="SoDienThoai" class="form-control" />
+                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable class="control-label">Chức vụ</lable>
+                        <select class="form-control" name="ChucVu">
+                            <option selected value="0"></option>
+                            @if (Model.ChucVu == "Cán bộ")
+                            {
+                                <option selected value="Cán bộ">Cán bộ</option>
+                            }
+                            else
+                            {
+                                <option value="Cán bộ">Cán bộ</option>
+                            }
+                            @if (Model.ChucVu == "Nhân viên")
+                            {
+                                <option selected value="Nhân viên">Nhân viên</option>
+                            }
+                            else
+                            {
+                                <option value="Nhân viên">Nhân viên</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                        @Html.ActionLink("Hủy", "Index", new{}, new { @class = "btn btn-danger" })
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

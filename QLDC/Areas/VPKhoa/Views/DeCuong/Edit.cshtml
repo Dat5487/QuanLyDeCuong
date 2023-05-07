@@ -1,0 +1,92 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.DeCuong
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var giangvien = ViewBag.GV as List<GiangVien>;
+    var monhoc = ViewBag.MH as List<MonHoc>;
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Chỉnh sửa thông tin đề cương</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                <form asp-action="Update" enctype="multipart/form-data">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div hidden class="form-group">
+                        <label asp-for="MaDeCuong" class="control-label"></label>
+                        <input asp-for="MaDeCuong" class="form-control" />
+                        <span asp-validation-for="MaDeCuong" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TenDeCuong" class="control-label"></label>
+                        <input asp-for="TenDeCuong" class="form-control" />
+                        <span asp-validation-for="TenDeCuong" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="control-label">Giảng viên</lable>
+                        <select class="form-control" name="MaGiangVien">
+                            <option value="0"></option>
+                            @foreach (var item in giangvien)
+                            {
+                                if(Model.MaGiangVien == item.MaGiangVien)
+                                {
+                                    <option selected value="@item.MaGiangVien">@item.TenGiangVien</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MaGiangVien">@item.TenGiangVien</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <lable class="control-label">Môn học</lable>
+                        <select class="form-control" name="MaMon">
+                            <option value="0"></option>
+                            @foreach (var item in monhoc)
+                            {
+                                if (Model.MaMon == item.MaMon)
+                                {
+                                    <option selected value="@item.MaMon">@item.TenMon</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.MaMon">@item.TenMon</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TomTat" class="control-label"></label>
+                        <input asp-for="TomTat" class="form-control" />
+                        <span asp-validation-for="TomTat" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="control-label">File</lable>
+                        <br />
+                        <input type="file" name="file" />
+                        <input type="hidden" asp-for="DataFile" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+@*                        @Html.ActionLink("Hủy", "Index", new{}, new { @class = "btn btn-danger" })
+*@                        <a class="btn btn-danger" href="##" onClick="history.go(-1); return false;">Quay lại</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

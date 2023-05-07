@@ -1,0 +1,63 @@
+﻿@model QLDC.Models.DeCuong
+@using QLDC.Models;
+
+@{
+    ViewData["Title"] = "Details";
+        Layout = "~/Areas/GVien/Views/Shared/_Layout.cshtml";
+}
+@{
+    var giangvien = ViewBag.GV as List<GiangVien>;
+    var monhoc = ViewBag.MH as List<MonHoc>;
+    var nhanvien = ViewBag.NV as List<VanPhongKhoa>;
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Thông tin đề cương</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+
+                <partial name="_Detail_DeCuong" />
+
+                <dt class="control-label col-sm-2">Trạng thái</dt>
+                <dd class="col-sm-10">
+                    @if (Model.TrangThai == true)
+                    {
+                        <text>Đã phê duyệt</text>
+                    }
+                    else
+                    {
+                        <text>Chưa phê duyệt</text>
+                    }
+                </dd>
+                @if (Model.TrangThai == true)
+                {
+                    <dt class="control-label col-sm-2">Người phê duyệt</dt>
+                    @if (nhanvien.FirstOrDefault(x => x.MaNhanVien == Model.MaNhanVien) != null)
+                    {
+                        <dd class="col-sm-10"> @nhanvien.FirstOrDefault(x => x.MaNhanVien == Model.MaNhanVien).TenNhanVien</dd>
+                    }
+                    else
+                    {
+                        <dd class="col-sm-10"></dd>
+                    }
+                    <dt class="control-label col-sm-2">Ngày phê duyệt</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NgayPheDuyet)
+                    </dd>
+                }
+
+            </dl>
+            <div class="form-group">
+                <div class="col-md-offset-2 ">
+@*                    @Html.ActionLink("Quay lại", "Index", new{ }, new { @class = "btn btn-danger" })*@
+                    <a class="btn btn-danger" href="##" onClick="history.go(-1); return false;">Quay lại</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

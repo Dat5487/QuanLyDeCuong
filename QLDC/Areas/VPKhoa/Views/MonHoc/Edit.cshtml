@@ -1,0 +1,72 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.MonHoc
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Chỉnh sửa thông tin môn học</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                <form asp-action="Update">
+                    <div hidden class="form-group ">
+                        <label asp-for="MaMon" class="control-label"></label>
+                        <input asp-for="MaMon" class="form-control" />
+                        <span asp-validation-for="MaMon" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TenMon" class="control-label"></label>
+                        <input asp-for="TenMon" class="form-control" />
+                        <span asp-validation-for="TenMon" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SoTinChi" class="control-label"></label>
+                        <input asp-for="SoTinChi" class="form-control" />
+                        <span asp-validation-for="SoTinChi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <lable class="control-label">Hình thức thi</lable>
+                        <select class="form-control" name="HinhThucThi">
+                            <option selected value="0"></option>
+                            @if (ViewBag.HinhThucThi == "Trắc nghiệm")
+                            {
+                                <option selected value="Trắc nghiệm">Trắc nghiệm</option>
+                            }
+                            else
+                            {
+                                <option value="Trắc nghiệm">Trắc nghiệm</option>
+                            }
+                            @if (ViewBag.HinhThucThi == "Tự luận")
+                            {
+                                <option selected value="Tự luận">Tự luận</option>
+                            }
+                            else
+                            {
+                                <option value="Tự luận">Tự luận</option>
+                            }
+                            @if (ViewBag.HinhThucThi == "Vấn đáp")
+                            {
+                                <option selected value="Vấn đáp">Vấn đáp</option>
+                            }
+                            else
+                            {
+                                <option value="Vấn đáp">Vấn đáp</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                        @Html.ActionLink("Hủy", "Index", new{}, new { @class = "btn btn-danger" })
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

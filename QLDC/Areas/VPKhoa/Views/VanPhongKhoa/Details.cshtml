@@ -1,0 +1,42 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.VanPhongKhoa
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Thông tin nhân viên</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TenNhanVien)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TenNhanVien)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.SoDienThoai)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.SoDienThoai)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ChucVu)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ChucVu)
+                </dd>
+            </dl>
+            <div class="form-group">
+                <div class="col-md-offset-2 ">
+                    @Html.ActionLink("Quay lại", "Index", new {}, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

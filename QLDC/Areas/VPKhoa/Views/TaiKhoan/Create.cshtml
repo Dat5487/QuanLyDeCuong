@@ -1,0 +1,41 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="card shadow mb-4 mx-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Tạo tài khoản mới</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateNew">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <lable class="control-label">Phân quyền</lable>
+                <select class="form-control" name="PhanQuyen">
+                    <option selected value="0"></option>
+                    <option value="Giảng viên">Giảng viên</option>
+                    <option value="Quản lý">Quản lý</option>
+                </select>
+            </div>
+            <div class="col-md-offset-2 ">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                @Html.ActionLink("Hủy", "Index", new{}, new { @class = "btn btn-danger" })
+            </div>
+        </form>
+    </div>
+</div>

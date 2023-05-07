@@ -1,0 +1,79 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.GiangVien
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Thông tin giảng viên</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class = "col-sm-2">
+                   @Html.DisplayNameFor(model => model.MaGiangVien)
+                </dt>
+                <dd class = "col-sm-10">
+                   @Html.DisplayFor(model => model.MaGiangVien)
+                </dd>
+                <dt class = "col-sm-2">
+                   @Html.DisplayNameFor(model => model.TenGiangVien)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.TenGiangVien)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.GioiTinh)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.GioiTinh)
+                    {
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio1" name="GioiTinh" value="True" disabled checked>Nam
+                            <label class="form-check-label" for="radio1"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio2" name="GioiTinh" value="False" disabled>Nữ
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio1" name="GioiTinh" value="True" disabled>Nam
+                            <label class="form-check-label" for="radio1"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="radio2" name="GioiTinh" value="False" disabled checked>Nữ
+                            <label class="form-check-label" for="radio2"></label>
+                        </div>
+                    }
+                </dd>
+                <dt class = "col-sm-2">
+                     @Html.DisplayNameFor(model => model.SoDienThoai)
+                </dt>
+                <dd class = "col-sm-10">
+                      @Html.DisplayFor(model => model.SoDienThoai)
+                </dd>
+                <dt class = "col-sm-2">
+                      @Html.DisplayNameFor(model => model.DiaChi)
+                </dt>
+                <dd class = "col-sm-10">
+                      @Html.DisplayFor(model => model.DiaChi)
+                </dd>
+            </dl>
+                <div class="form-group">
+                    <div class="col-md-offset-2 ">
+                        @Html.ActionLink("Quay lại", "Index", new {}, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

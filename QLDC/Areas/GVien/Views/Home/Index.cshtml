@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Areas/GVien/Views/Shared/_Layout.cshtml";
+
+}
+<link href="~/css/style.css" rel="stylesheet" />
+
+<div class="team-boxed">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Hệ thống quản lý đề cương</h2>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/img/subject.png">
+                    <h3 class="name">Đề cương</h3>
+                    <p class="description">Hiện tại có @ViewBag.sldecuong đề cương trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các đề cương.</p>
+                    <a href="~/GVien/DeCuong" type="button" class="btn btn-primary">Danh sách đề cương</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/img/subject.png">
+                    <h3 class="name">Đề cương nháp</h3>
+                    <p class="description">Hiện tại có @ViewBag.sldecuongnhap đề cương nháp trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các đề cương nháp.</p>
+                    <a href="~/GVien/DeCuong/DSDeCuongNhap" type="button" class="btn btn-primary">Danh sách đề cương nháp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

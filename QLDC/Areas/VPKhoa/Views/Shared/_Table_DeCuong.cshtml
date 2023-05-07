@@ -1,0 +1,74 @@
+﻿@using QLDC.Models;
+@model IEnumerable<QLDC.Models.DeCuong>
+
+@{
+    var giangvien = ViewBag.GV as List<GiangVien>;
+    var monhoc = ViewBag.MH as List<MonHoc>;
+}
+
+@foreach (var item in Model)
+{
+    if (item.TrangThai == true)
+    {
+        <tr id="row_@item.MaDeCuong">
+            <td><a asp-route-id="@item.MaDeCuong" asp-action="Details">@item.TenDeCuong</a></td>
+
+            @*Tên giảng viên*@
+            @if (giangvien.FirstOrDefault(x => x.MaGiangVien == item.MaGiangVien) != null)
+            {
+                <td>@giangvien.FirstOrDefault(x=>x.MaGiangVien == item.MaGiangVien).TenGiangVien</td>
+            }
+            else
+            {
+                <td></td>
+            }
+
+            @*Tên môn*@
+            @if (monhoc.FirstOrDefault(x => x.MaMon == item.MaMon) != null)
+            {
+                <td>@monhoc.FirstOrDefault(x=>x.MaMon == item.MaMon).TenMon</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            @*Ngày phê duyệt*@
+            @if (item.TrangThai == true)
+            {
+                <td>@item.NgayPheDuyet</td>
+            }
+            else
+            {
+                <td>Chưa phê duyệt</td>
+
+            }
+            @*Trạng thái*@
+            <td>
+                @if (item.TrangThai == true)
+                {
+                    <text>Đã phê duyệt</text>
+                }
+                else
+                {
+                    <text>Chưa phê duyệt</text>
+                }
+            </td>
+            <td>
+                @if (item.DataFile != null)
+                {
+                    @Html.ActionLink("Đọc", "Read", new { id = item.MaDeCuong}, new { @class = "btn  btn-outline-dark" })
+                }
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDeCuong}, new { @class = "btn btn-primary" })
+                @if (item.TrangThai == false)
+                {
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaDeCuong}, new { @class = "btn btn-warning" })
+                }
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaDeCuong}, new { @class = "btn btn-danger" })
+@*                @if (item.TrangThai == false)
+                {
+                    @Html.ActionLink("Phê duyệt", "PheDuyet", new { id = item.MaDeCuong}, new { @class = "btn btn-info" })
+                }*@
+            </td>
+        </tr>
+    }
+}

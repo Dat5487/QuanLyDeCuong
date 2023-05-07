@@ -1,0 +1,67 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.DeCuong
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+}
+@{
+    var giangvien = ViewBag.GV as List<GiangVien>;
+    var monhoc = ViewBag.MH as List<MonHoc>;
+
+}
+<div class="card shadow mb-4 mx-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Tạo đề cương mới</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateNew" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenDeCuong" class="control-label"></label>
+                <input asp-for="TenDeCuong" class="form-control" />
+                <span asp-validation-for="TenDeCuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TomTat" class="control-label"></label>
+                <input asp-for="TomTat" class="form-control" />
+                <span asp-validation-for="TomTat" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <lable class="control-label">Giảng viên</lable>
+                <select class="form-control" name="MaGiangVien">
+                    <option value="0"></option>
+                    @foreach (var item in giangvien)
+                    {
+                        <option value="@item.MaGiangVien">@item.TenGiangVien</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <lable class="control-label">Môn học</lable>
+                <select class="form-control" name="MaMon">
+                    <option value="0"></option>
+                    @foreach (var item in monhoc)
+                    {
+                        <option value="@item.MaMon">@item.TenMon</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <lable class="control-label">File</lable>
+                <br />
+                <input type="file" name="file"/>
+                <input type="hidden" asp-for="DataFile"/>
+            </div>
+
+
+
+            <div class="col-md-offset-2 ">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                @Html.ActionLink("Hủy", "Index", new{}, new { @class = "btn btn-danger" })
+            </div>
+        </form>
+
+    </div>
+</div>

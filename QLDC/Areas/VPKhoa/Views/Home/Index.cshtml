@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+<link href="~/css/style.css" rel="stylesheet" />
+
+<div class="team-boxed">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Hệ thống quản lý đề cương</h2>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded" src="~/img/acc.png">
+                    <h3 class="name">Tài khoản</h3>
+                    <p class="description">Hiện tại có @ViewBag.sltaikhoan tài khoản trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các tài khoản.</p>
+                    <a href="~/VPKhoa/TaiKhoan" type="button" class="btn btn-primary">Quản lý tài khoản</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded" src="~/img/teacher.png">
+                    <h3 class="name">Giảng viên</h3>
+                    <p class="description">Hiện tại có @ViewBag.slgiangvien giảng viên trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các giảng viên.</p>
+                    <a href="~/VPKhoa/GiangVien" type="button" class="btn btn-primary">Quản lý giảng viên</a>
+                </div>
+            </div>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded" src="~/img/subject2.png">
+                    <h3 class="name">Môn học</h3>
+                    <p class="description">Hiện tại có @ViewBag.slmonhoc môn học trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các môn học.</p>
+                    <a href="~/VPKhoa/MonHoc" type="button" class="btn btn-primary">Quản lý môn học</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded" src="~/img/class2.png">
+                    <h3 class="name">Văn phòng khoa</h3>
+                    <p class="description">Hiện tại có @ViewBag.slnhanvien nhân viên trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các nhân viên.</p>
+                    <a href="~/VPKhoa/VanPhongKhoa" type="button" class="btn btn-primary">Danh sách nhân viên</a>
+                </div>
+            </div>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/img/subject.png">
+                    <h3 class="name">Đề cương</h3>
+                    <p class="description">Hiện tại có @ViewBag.sldecuong đề cương trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các đề cương.</p>
+                    <a href="~/VPKhoa/DeCuong" type="button" class="btn btn-primary">Danh sách đề cương</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/img/subject.png">
+                    <h3 class="name">Đề cương nháp</h3>
+                    <p class="description">Hiện tại có @ViewBag.sldecuongnhap đề cương trong hệ thống.<br>Bấm vào nút bên dưới để quản lý các đề cương nháp.</p>
+                    <a href="~/VPKhoa/DeCuong/DSDeCuongNhap" type="button" class="btn btn-primary">Danh sách đề cương nháp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

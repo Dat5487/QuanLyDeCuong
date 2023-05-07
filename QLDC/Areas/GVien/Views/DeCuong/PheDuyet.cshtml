@@ -1,0 +1,57 @@
+﻿@using QLDC.Models;
+@model QLDC.Models.DeCuong
+
+@{
+    ViewData["Title"] = "PheDuyet";
+    Layout = "~/Areas/GVien/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var giangvien = ViewBag.GV as List<GiangVien>;
+    var monhoc = ViewBag.MH as List<MonHoc>;
+    var nhanvien = ViewBag.NV as List<VanPhongKhoa>;
+
+}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">Phê duyệt đề cương</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <partial name="_Detail_DeCuong" />
+            </dl>
+            <div class="form-horizontal">
+                <form asp-action="XacNhanPheDuyet">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div hidden class="form-group">
+                        <label asp-for="MaDeCuong" class="control-label"></label>
+                        <input asp-for="MaDeCuong" class="form-control" />
+                        <span asp-validation-for="MaDeCuong" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <lable class="control-label">Nhân viên phê duyệt</lable>
+                        <select class="form-control" name="MaNhanVien">
+                            <option value="0"></option>
+                            @foreach (var item in nhanvien)
+                            {
+                                <option value="@item.MaNhanVien">@item.TenNhanVien</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 ">
+                            <input type="submit" value="Phê duyệt" class="btn btn-primary" />
+                            @*@Html.ActionLink("Quay lại", "Index", new{ }, new { @class = "btn btn-danger" })*@
+                            <a class="btn btn-danger" href="##" onClick="history.go(-1); return false;">Quay lại</a>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+﻿@using QLDC.Models;
+@model IEnumerable<QLDC.Models.GiangVien>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/VPKhoa/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-10">
+                    <h4 class="m-0 font-weight-bold text-primary">Danh sách giảng viên</h4>
+                </div>
+                <div class="float-end ">
+                    @Html.ActionLink("Thêm giảng viên", "Create", new {}, new { @class = "btn btn-success" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 ms-2">
+                    <form class="input-group w-100" asp-action="Search" method="get">
+                        <input type="text" class="form-control ms-2" placeholder="Tìm kiếm" name="term" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <th>
+                        <a asp-action="Index" asp-route-orderBy="TenGiangVien" asp-route-dsc="@ViewData["TenGiangVien"]" asp-route-page="@ViewData["Page"]">@Html.DisplayNameFor(model => model.TenGiangVien)</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-orderBy="GioiTinh" asp-route-dsc="@ViewData["GioiTinh"]" asp-route-page="@ViewData["Page"]">@Html.DisplayNameFor(model => model.GioiTinh)</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-orderBy="SoDienThoai" asp-route-dsc="@ViewData["SoDienThoai"]" asp-route-page="@ViewData["Page"]">@Html.DisplayNameFor(model => model.SoDienThoai)</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-orderBy="DiaChi" asp-route-dsc="@ViewData["DiaChi"]" asp-route-page="@ViewData["Page"]">@Html.DisplayNameFor(model => model.DiaChi)</a>
+                    </th>
+                    <th>
+                        Thao tác
+                    </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="row_@item.MaGiangVien">
+                                <td><a asp-route-id="@item.MaGiangVien" asp-action="Details">@item.TenGiangVien</a></td>
+                                <td>
+                                    @if (item.GioiTinh == true)
+                                    {
+                                        <text>Nam</text>
+                                    }
+                                    else
+                                    {
+                                        <text>Nữ</text>
+                                    }
+                                </td>
+                                <td>@item.SoDienThoai</td>
+                                <td>@item.DiaChi</td>
+                                <td>
+
+                                    @Html.ActionLink("DS đề cương của GV", "DSDeCuongOfGV","DeCuong", new { MaGiangVien = item.MaGiangVien}, new { @class = "btn btn-info" })
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaGiangVien}, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaGiangVien}, new { @class = "btn btn-warning" })
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaGiangVien}, new { @class = "btn btn-danger" })                               
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <tr>
+                <td colspan="2">
+                    @{
+                        int pages = ViewBag.Pages; int p = ViewBag.Page;
+                    }
+                    <form asp-action="Index" method="get">
+                        <input class="btn btn-primary" type="submit" value="Đến" /> trang <input type="number" max="@pages" min="1" name="page" value="@p" /> trong @pages
+                    </form>
+                </td>
+                <td colspan="3"><strong>Tổng số: @Model.Count()</strong></td>
+            </tr>
+        </div>
+    </div>
+</div>
+
+

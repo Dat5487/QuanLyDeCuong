@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\dat54\source\repos\QLDC\QLDC\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-04-15T08:03:03.7236777Z;True|2023-04-12T20:27:22.3135937+07:00;True|2023-04-12T20:25:42.7518660+07:00;False|2023-04-12T20:24:29.1595881+07:00;False|2023-04-12T20:23:29.2688228+07:00;True|2023-04-12T20:20:34.8275234+07:00;True|2023-04-12T20:16:48.1375924+07:00;True|2023-04-12T20:16:31.6801881+07:00;False|2023-04-12T20:15:53.6492637+07:00;True|2023-04-12T20:13:37.8756762+07:00;True|2023-03-25T11:13:13.7607585+07:00;True|2023-03-25T10:19:54.6889273+07:00;False|2023-03-25T10:18:57.0205831+07:00;True|2023-03-25T10:15:41.6418661+07:00;True|2023-03-25T10:00:31.7641242+07:00;True|2023-03-25T09:47:45.5329086+07:00;False|2023-03-25T09:46:23.4674866+07:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=.\SQLEXPRESS%3bDatabase=QLDC%3bIntegrated Security=false%3buser id = sa%3bpassword=1122%3bTrustServerCertificate=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
